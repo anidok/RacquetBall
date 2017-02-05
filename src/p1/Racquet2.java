@@ -5,20 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Racquet2 implements KeyListener {
-	protected static int x ;
+public class Racquet2 implements Racquet,KeyListener {
+	protected  int x ;
 	private int y=23;		
 	/*value of y has been initialized in paint but for some reasons its giving unexpected result if I don't initialize the 
 	value of y here and also value of y must be greater than 22 in order to run the game successfully.(Don't know why)
 	Running fine while debugging.*/
 	
-	protected final int WIDTH = 50;
-	protected final int HEIGHT = 10;
-	private static int vx = 0;
-	Game game;
-	private int flag = 0;		
-	/*flag will serve the purpose to position the racquet for the first time paint in invoked
-	as to position the racquet game.getWidth() is required which returns '0' inside constructor.*/
+	private static int vx = 0;		//if the variable is not going to be used by the ibjects of the class, better declare the variable static.
+	private int flag = 0;	
+	Game game;		
 	
 	public Racquet2(Game game)
 	{

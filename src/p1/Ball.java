@@ -29,22 +29,25 @@ public class Ball {
 			vx = -game.speed;
 		if(x+vx < 0)
 			vx = game.speed;
+		
+		//-----------------------Game Over------------------------
 		if(y+vy > game.getHeight() - DIAMETER)
 			game.gameOver(1);		//passing 1 as player1 wins in this case.
 		if(y+vy < 0)
-			game.gameOver(2);		//passing 2 as player2 wins in this case.		
+			game.gameOver(2);		//passing 2 as player2 wins in this case.
+		
 		
 		//-------------------Checking Collision detection----------------------------------
-		if((y+DIAMETER+vy > racquet2.getTopY()) & ((x> Racquet2.x & x< Racquet2.x + racquet2.WIDTH) | (x+DIAMETER> Racquet2.x & x+DIAMETER< Racquet2.x + racquet2.WIDTH)) )
+		if((y+DIAMETER+vy > racquet2.getTopY()) & ((x> racquet2.x & x< racquet2.x + Racquet.WIDTH) | (x+DIAMETER> racquet2.x & x+DIAMETER< racquet2.x + Racquet.WIDTH)) )
 		{
 			vy = -game.speed;
 			System.out.println(game.speed);
 		}
-		if(y+vy < racquet1.getBottomY() & ((x> Racquet1.x & x< Racquet1.x + racquet1.WIDTH) | (x+DIAMETER> Racquet1.x & x+DIAMETER< Racquet1.x + racquet1.WIDTH)) )
+		if(y+vy < racquet1.getBottomY() & ((x> racquet1.x & x< racquet1.x + Racquet.WIDTH) | (x+DIAMETER> racquet1.x & x+DIAMETER< racquet1.x + Racquet.WIDTH)) )
 		{
 			vy = game.speed;
 			game.speed++;  //each time ball hits the racquet1 increase the speed by 1.
-			System.out.println(game.speed);
+			//System.out.println(game.speed);
 		}
 		
 		x+= vx;
@@ -56,7 +59,7 @@ public class Ball {
 		if(flag==0)
 		{
 			x= (game.getWidth()/2) - DIAMETER/2 ;	   	//POSITIONING THE BALL AT THE CENTER
-			y= racquet1.y + racquet1.HEIGHT + 5;
+			y= racquet1.y + Racquet.HEIGHT + 5;
 			flag = 1;
 		}
 		g2d.setColor(Color.BLUE);

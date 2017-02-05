@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -54,18 +55,34 @@ public class Game extends JPanel
 			msg = "Player 1 wins.";
 		else if(winner ==2)
 			msg = "Player 2 wins.";
-		JOptionPane.showMessageDialog(this, msg, "Game Over", JOptionPane.YES_NO_OPTION);
+		JOptionPane.showMessageDialog(this, msg, "Game Over", JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 	}
+	
+	
 	
 	//---------------------------Main method--------------------------
 	public static void  main(String [] args) throws InterruptedException
 	{
 		JFrame frame = new JFrame("RacqueBall");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 350, 400);
+		
+		String str=
+				"<html><big><font color='green'>RacquetBall</font></big><hr>"
+				+"<p align=center><font size='5' color='blue'>Players</font>"
+				+"<br><br><p align=left>Player1 - Yellow Racquet"
+				+"<p align=left>Player2 - Pink Racquet"
+				+"<hr><p align=center><font size='5' color='blue'>Controls</font>"
+				+"<br><br><p align=left>Player1 - Keys- Left & Right"
+				+"<p align=left>Player2 - Keys- A & D<hr>"
+				+"<br><p align=center>Click 'OK' to start the game.<br>";
+		
+		int value =JOptionPane.showConfirmDialog(frame, str, "Game instructions", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+		if(value== JOptionPane.CLOSED_OPTION)
+			System.exit(0);
 		Game game = new Game();
 		frame.setContentPane(game);
-		frame.setBounds(100, 100, 350, 400);
 		frame.setVisible(true);
 		while(true)
 		{
